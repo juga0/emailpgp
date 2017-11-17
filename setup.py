@@ -16,7 +16,7 @@ setup(
     author_email='juga@riseup.net',
     license='MIT',
     url='https://github.com/juga0/emailpgp',
-    packages=['mime'],
+    packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     extras_require={
         'dev': ['ipython', 'pyflakes', 'pep8'],
     },
