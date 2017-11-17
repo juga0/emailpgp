@@ -48,8 +48,8 @@ class MIMEMultipartPGP(MIMEMultipart):
         description = MIMEApplicationPGPDescription()
         payload = MIMEApplicationPGPPayload(_data)
         _subparts = [description, payload]
-        MIMEMultipart.__init__(self, _subtype, boundary, _subparts,
-                               policy=policy, **_params)
+        MIMEMultipart.__init__(self, _subtype=_subtype, boundary=boundary,
+                               _subparts=_subparts, policy=policy, **_params)
 
 
 class MIMEApplicationPGPPayload(MIMEApplication):
@@ -57,7 +57,8 @@ class MIMEApplicationPGPPayload(MIMEApplication):
 
     def __init__(self, _data,
                  _subtype='octet-stream; name="encrypted.asc"',
-                 _encoder=encoders.encode_noop, policy=None, **_params):
+                 _encoder=encoders.encode_noop, policy=policy.default,
+                 **_params):
         """Create an application/octet-stream type MIME document.
 
         _data is a string containing the raw application data.
@@ -74,15 +75,16 @@ class MIMEApplicationPGPPayload(MIMEApplication):
         """
         _params["Content-Description"] = "OpenPGP encrypted message"
         _params["Content-Disposition"] = 'inline; filename="encrypted.asc"'
-        MIMEApplication.__init__(self, _data, _subtype, _encoder,
-                                 policy=policy, **_params)
+        MIMEApplication.__init__(self, _data=_data, _subtype=_subtype,
+                                 _encoder=_encoder, policy=policy, **_params)
 
 
 class MIMEApplicationPGPDescription(MIMEApplication):
     """Class for generating application/pgp-encrypted MIME documents."""
 
     def __init__(self, _data="Version: 1\n", _subtype='pgp-encrypted',
-                 _encoder=encoders.encode_noop, policy=None, **_params):
+                 _encoder=encoders.encode_noop, policy=policy.default,
+                 **_params):
         """Create an application/pgp-encrypted type MIME document.
 
         _data is a string containing by default Version: 1\n.
@@ -98,5 +100,5 @@ class MIMEApplicationPGPDescription(MIMEApplication):
         header.
         """
         _params["Content-Description"] = "PGP/MIME version identification"
-        MIMEApplication.__init__(self, _data, _subtype, _encoder,
-                                 policy=policy, **_params)
+        MIMEApplication.__init__(self, _data=_data, _subtype=_subtype,
+                                 _encoder=_encoder, policy=policy, **_params)
