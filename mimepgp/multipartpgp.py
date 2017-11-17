@@ -22,7 +22,7 @@ class MIMEMultipartPGP(MIMEMultipart):
     """Base class for MIME multipart/encrypted type messages."""
 
     def __init__(self, _data=None, _subtype='encrypted', boundary=None,
-                 *, policy=policy.default, **_params):
+                 policy=policy.default, **_params):
         """Creates a multipart/encrypted type message.
 
         By default, creates a multipart/encrypted message, with proper
@@ -57,7 +57,7 @@ class MIMEApplicationPGPPayload(MIMEApplication):
 
     def __init__(self, _data,
                  _subtype='octet-stream; name="encrypted.asc"',
-                 _encoder=encoders.encode_noop, *, policy=None, **_params):
+                 _encoder=encoders.encode_noop, policy=None, **_params):
         """Create an application/octet-stream type MIME document.
 
         _data is a string containing the raw application data.
@@ -82,7 +82,7 @@ class MIMEApplicationPGPDescription(MIMEApplication):
     """Class for generating application/pgp-encrypted MIME documents."""
 
     def __init__(self, _data="Version: 1\n", _subtype='pgp-encrypted',
-                 _encoder=encoders.encode_noop, *, policy=None, **_params):
+                 _encoder=encoders.encode_noop, policy=None, **_params):
         """Create an application/pgp-encrypted type MIME document.
 
         _data is a string containing by default Version: 1\n.
