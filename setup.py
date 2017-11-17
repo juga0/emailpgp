@@ -9,7 +9,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='emailpgp',
-    version='0.1.0',
+    version='0.1.1',
     description='Extend Python email.mime classes to add MIME'
     ' multipart/pgp-encrypted type messages.',
     long_description='',
