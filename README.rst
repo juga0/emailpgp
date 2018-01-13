@@ -3,16 +3,16 @@ emailpgp
 ========
 
 .. image:: https://badge.fury.io/py/emailpgp.svg
-:target: https://badge.fury.io/py/emailpgp
-:alt: Latest stable version
+    :target: https://badge.fury.io/py/emailpgp
+    :alt: Latest stable version
 
 .. image:: https://travis-ci.org/juga0/emailpgp.svg?branch=master
-:target: https://travis-ci.org/juga0/emailpgp?branch=master
-:alt: Travis-CI
+    :target: https://travis-ci.org/juga0/emailpgp?branch=master
+    :alt: Travis-CI
 
 .. image:: https://coveralls.io/repos/github/juga0/emailpgp/badge.svg?branch=master
-:target: https://coveralls.io/github/juga0/emailpgp?branch=master
-:alt: Coveralls
+    :target: https://coveralls.io/github/juga0/emailpgp?branch=master
+    :alt: Coveralls
 
 Extend Python email classes to add MIME multipart/pgp-encrypted type
 messages.
