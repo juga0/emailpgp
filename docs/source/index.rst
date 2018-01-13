@@ -6,9 +6,15 @@
 Welcome to emailpgp's documentation!
 ====================================
 
+Extend Python email classes to add MIME multipart/pgp-encrypted type
+messages.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+   API
+   ----
 
    modules
    emailpgp
