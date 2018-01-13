@@ -15,14 +15,14 @@ __all__ = ['MIMEMultipartPGP', 'MIMEApplicationPGPPayload',
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email import encoders
-from email import policy
+# from email import policy
 
 
 class MIMEMultipartPGP(MIMEMultipart):
     """Base class for MIME multipart/encrypted type messages."""
-
+    # NOTE: policy is only introduced in Python3.6 (policy=policy.default)
     def __init__(self, _data=None, _subtype='encrypted', boundary=None,
-                 policy=policy.default, **_params):
+                 **_params):
         """Creates a multipart/encrypted type message.
 
         By default, creates a multipart/encrypted message, with proper
@@ -49,7 +49,7 @@ class MIMEMultipartPGP(MIMEMultipart):
         payload = MIMEApplicationPGPPayload(_data)
         _subparts = [description, payload]
         MIMEMultipart.__init__(self, _subtype=_subtype, boundary=boundary,
-                               _subparts=_subparts, policy=policy, **_params)
+                               _subparts=_subparts, **_params)
 
 
 class MIMEApplicationPGPPayload(MIMEApplication):
@@ -57,7 +57,7 @@ class MIMEApplicationPGPPayload(MIMEApplication):
 
     def __init__(self, _data,
                  _subtype='octet-stream; name="encrypted.asc"',
-                 _encoder=encoders.encode_noop, policy=policy.default,
+                 _encoder=encoders.encode_noop,
                  **_params):
         """Create an application/octet-stream type MIME document.
 
@@ -76,14 +76,14 @@ class MIMEApplicationPGPPayload(MIMEApplication):
         _params["Content-Description"] = "OpenPGP encrypted message"
         _params["Content-Disposition"] = 'inline; filename="encrypted.asc"'
         MIMEApplication.__init__(self, _data=_data, _subtype=_subtype,
-                                 _encoder=_encoder, policy=policy, **_params)
+                                 _encoder=_encoder, **_params)
 
 
 class MIMEApplicationPGPDescription(MIMEApplication):
     """Class for generating application/pgp-encrypted MIME documents."""
 
     def __init__(self, _data="Version: 1\n", _subtype='pgp-encrypted',
-                 _encoder=encoders.encode_noop, policy=policy.default,
+                 _encoder=encoders.encode_noop,
                  **_params):
         """Create an application/pgp-encrypted type MIME document.
 
@@ -101,4 +101,4 @@ class MIMEApplicationPGPDescription(MIMEApplication):
         """
         _params["Content-Description"] = "PGP/MIME version identification"
         MIMEApplication.__init__(self, _data=_data, _subtype=_subtype,
-                                 _encoder=_encoder, policy=policy, **_params)
+                                 _encoder=_encoder, **_params)
