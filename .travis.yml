@@ -3,6 +3,7 @@ sudo: required
 dist: trusty
 python:
     - '3.5'
+    # - '3.6'
 
 install:
     - pip install -e .; pip install ".[test]"; \
@@ -10,7 +11,7 @@ install:
 
 env:
     - TOX_ENV=lint
-    - TOX_ENV=py36,stats
+    # - TOX_ENV=py36
     - TOX_ENV=py35,stats
     - TOX_ENV=doc
 
