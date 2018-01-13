@@ -20,6 +20,8 @@ setup(
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     extras_require={
         'dev': ['ipython', 'pyflakes', 'pep8'],
+        'test': ['tox', 'pytest'],
+        'doc': ['sphinx', 'pylint']
     },
     zip_safe=False,
     include_package_data=True,
