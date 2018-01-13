@@ -1,0 +1,23 @@
+language: python
+sudo: required
+dist: trusty
+python:
+    - '3.5'
+
+install:
+    - pip install -e .; pip install ".[test]"; \
+      pip install ".[doc]"; pip install ".[dev]"
+
+env:
+    - TOX_ENV=lint
+    - TOX_ENV=py36,stats
+    - TOX_ENV=py35,stats
+    - TOX_ENV=doc
+
+script:
+  - tox -c tox.ini -e $TOX_ENV
+  # - coverage run --source=pyac setup.py test
+
+after_success:
+  - coveralls
+  - codecov
