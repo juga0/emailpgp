@@ -1,0 +1,17 @@
+[run]
+branch = True
+source = emailpgp
+parallel = True
+
+[paths]
+source =
+    emailpgp
+   .tox/*/lib/python*/site-packages/emailpgp
+   .tox/*/lib/site-packages/emailpgp
+   .tox/pypy*/site-packages/emailpgp
+
+[report]
+omit =
+    */tests/*
+    */python?.?/*
+    *__init__*
