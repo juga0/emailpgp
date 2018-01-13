@@ -23,6 +23,7 @@ setup(
         'test': ['tox', 'pytest'],
         'doc': ['sphinx', 'pylint']
     },
+    python_requires=">=3.5",
     zip_safe=False,
     include_package_data=True,
     keywords='python mime OpenPGP',
